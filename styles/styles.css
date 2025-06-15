@@ -28,26 +28,54 @@
   font-weight: 300;
 }
 
-body{
+body {
+  font-family: 'Inter', sans-serif;
   background-color: #1a1a1a;
+  padding: 0;
+  margin: 0;
 }
 
-.encabezado{
-    height: 6.25rem;        
-    padding-left: 4.375rem;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    width: 100%;
-    background-color: #1a1a1a;
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+.encabezado {
+  position: fixed;
+  /* This is the key property */
+  top: 0;
+  height: 4.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  background-color: #343A40;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  z-index: 1000;
 }
 
-.logo{
-    padding-right: 0.5rem;
+.logo {
+  padding-right: 0.5rem;
+  margin-left: 2rem;
 }
+
+.logo-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.retornar-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.retornar{
+ margin-left: auto;
+}
+
 
 .banner-evento-transicion {
   position: relative;
@@ -71,19 +99,35 @@ body{
 .banner-evento-transicion img:nth-child(1) {
   animation-delay: 0s;
 }
+
 .banner-evento-transicion img:nth-child(2) {
   animation-delay: 5s;
 }
+
 .banner-evento-transicion img:nth-child(3) {
   animation-delay: 10s;
 }
 
 @keyframes fade {
-  0% { opacity: 0; }
-  5% { opacity: 1; }
-  30% { opacity: 1; }
-  35% { opacity: 0; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .banner-evento-transicion img:nth-child(1) {
@@ -97,7 +141,7 @@ body{
   font-family: 'Quicksand', sans-serif;
   font-size: 2rem;
   color: white;
-  background-color: black;
+  background-color: #343A40;
   border-radius: 15px;
   padding: 1rem;
   margin: 2rem auto;
@@ -116,7 +160,7 @@ body{
   border-radius: 5px;
   overflow: hidden;
   font-family: 'Quicksand', sans-serif;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nombre-evento {
@@ -164,89 +208,183 @@ body{
 }
 
 
-/*Error*/
+/****************************************************
+                          Error
+****************************************************/
 
 .contenedor-error {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Quicksand', sans-serif;
-    background-color: #1a1a1a;
-    color: white;
-    text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
 }
 
 .contenedor-error i {
-    font-size: 6rem;
-    color: #f0ad4e;
-    margin-bottom: 1rem;
+  font-size: 6rem;
+  color: #f0ad4e;
+  margin-bottom: 1rem;
 }
 
 .contenedor-error a {
-    color: #ffffff;
-    text-decoration: underline;
-    margin-top: 1rem;
+  color: #ffffff;
+  text-decoration: underline;
+  margin-top: 1rem;
 }
 
 
-/*Login*/
+/***************************************************
+                      Login
+***************************************************/
 
 .contenedor-login {
-    height: 100vh;background-color: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Quicksand', sans-serif;
-    
-    color: white;
+  height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+
+  color: white;
 }
 
 .contenedor-login h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
 .formulario-login {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
 .formulario-login label {
-    margin-bottom: 0.3rem;
-    font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 
 .formulario-login input {
-    padding: 0.5rem;
-    margin-bottom: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 .formulario-login input:focus {
-    outline: 2px solid #4bbf73; /* Verde claro */
+  outline: 2px solid #4bbf73;
+  /* Verde claro */
 }
 
 .formulario-login button {
-    background-color: #4bbf73;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.7rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #4bbf73;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .formulario-login button:hover {
-    background-color: #3ca764;
+  background-color: #3ca764;
 }
 
 .formulario-login input::placeholder {
-    font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/****************************************************
+                Eventos Inidividuales
+****************************************************/
+
+#imgMain {
+  height: 30rem;
+  display: block;
+  margin: 100px auto 20px auto;
+  border-radius: 5px;
+}
+
+.informacion {
+  display: flex;
+  /* activa flexbox */
+  flex-direction: row;
+  /* coloca los elementos en fila */
+}
+
+.column1 {
+  width: 55%;
+  /* columnas del mismo ancho */
+  margin-left: 3rem;
+  margin-right: 5rem;
+
+}
+
+.column2 {
+  width: 30%;
+  /* columnas del mismo ancho */
+}
+
+.detalles {
+  border: 2px solid #343A40;
+  background-color: #343A40;
+  border-radius: 5px;
+  width: 100%;
+  color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.resumen #fecha {
+  font-weight: bold;
+  color: #5761b8;
+}
+
+.resumen h1{
+  font-size: 3rem;
+  margin: 20px 0px;
+  font-weight: 1000px;
+}
+
+.ubicacion a{
+  text-decoration: none;
+  color: #5761b8;
+}
+.ubicacion i{
+  color: #5761b8;
+}
+.ubicacion a:hover{
+  text-decoration: underline;
+  color:  #4653c7;
+}
+
+.precios h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 10px 0px;
+  font-weight: 1000px;
+}
+.opcionEntrada {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+}
+.opcionEntrada #tipo{
+  font-size: 1.3rem;
+}
+.opcionEntrada #valor{
+  color: #5761b8;
+}
+.linea-hr {
+  margin: 0;
+  border-color: #9b9ca0;
+  opacity: 0.7;
 }
