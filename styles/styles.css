@@ -1,0 +1,252 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fuentes/Quicksand/static/Quicksand-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fuentes/Quicksand/static/Quicksand-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fuentes/Quicksand/static/Quicksand-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fuentes/Quicksand/static/Quicksand-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./fuentes/Quicksand/static/Quicksand-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+body{
+  background-color: #1a1a1a;
+}
+
+.encabezado{
+    height: 6.25rem;        
+    padding-left: 4.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.logo{
+    padding-right: 0.5rem;
+}
+
+.banner-evento-transicion {
+  position: relative;
+  width: 100%;
+  height: 25rem;
+  overflow: hidden;
+}
+
+.banner-evento-transicion img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fade 15s infinite;
+  padding: 0px;
+}
+
+.banner-evento-transicion img:nth-child(1) {
+  animation-delay: 0s;
+}
+.banner-evento-transicion img:nth-child(2) {
+  animation-delay: 5s;
+}
+.banner-evento-transicion img:nth-child(3) {
+  animation-delay: 10s;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  30% { opacity: 1; }
+  35% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.banner-evento-transicion img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+.contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.card {
+  width: 45%;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nombre-evento {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+}
+
+.banner-evento img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Colores por categoría */
+.categoria-musica {
+  background-color: #1f9bcf;
+  color: white;
+}
+
+.categoria-cine {
+  background-color: #d9534f;
+  color: white;
+}
+
+.categoria-feria {
+  background-color: #4bbf73;
+  color: white;
+}
+
+.categoria-cultural {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.categoria-fiesta {
+  background-color: #343a40;
+  color: white;
+}
+
+.categoria-otro {
+  background-color: #ffffff;
+  color: black;
+}
+
+
+/*Error*/
+
+.contenedor-error {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+.contenedor-error i {
+    font-size: 6rem;
+    color: #f0ad4e;
+    margin-bottom: 1rem;
+}
+
+.contenedor-error a {
+    color: #ffffff;
+    text-decoration: underline;
+    margin-top: 1rem;
+}
+
+
+/*Login*/
+
+.contenedor-login {
+    height: 100vh;background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    
+    color: white;
+}
+
+.contenedor-login h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.formulario-login label {
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.formulario-login input {
+    padding: 0.5rem;
+    margin-bottom: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.formulario-login input:focus {
+    outline: 2px solid #4bbf73; /* Verde claro */
+}
+
+.formulario-login button {
+    background-color: #4bbf73;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-login button:hover {
+    background-color: #3ca764;
+}
+
+.formulario-login input::placeholder {
+    font-family: 'Quicksand', sans-serif;
+}
