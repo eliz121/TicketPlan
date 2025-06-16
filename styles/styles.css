@@ -4,6 +4,7 @@
   font-weight: 400;
 }
 
+
 @font-face {
   font-family: 'Quicksand';
   src: url('./fuentes/Quicksand/static/Quicksand-Medium.ttf') format('truetype');
@@ -29,7 +30,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background-color: #1a1a1a;
   padding: 0;
   margin: 0;
@@ -289,7 +290,7 @@ body {
   border-radius: 8px;
   padding: 0.7rem;
   font-size: 1.2rem;
-  cursor: pointer;
+  cursor: po;
   transition: background-color 0.3s ease;
 }
 
