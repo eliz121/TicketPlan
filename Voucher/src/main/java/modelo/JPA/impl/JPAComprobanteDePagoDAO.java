@@ -22,7 +22,7 @@ public class JPAComprobanteDePagoDAO implements ComprobanteDAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            e.printStackTrace();  // Para depuración, puedes cambiarlo por logging si lo prefieres
+            e.printStackTrace(); 
             return false;
         } finally {
             em.close();
