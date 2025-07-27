@@ -1,12 +1,12 @@
 package modelo.dao;
 
+import modelo.entities.Entrada;
 import java.util.List;
 
-import modelo.entities.Entrada;
-
 public interface EntradaDAO {
-	
-	public List<Entrada> listarEntradas (int idUsuario);
-	
-	public Entrada obtenerDetalleEntrada (int idEntrada);
+    List<Entrada> listarEntradas(int idCliente);
+    Entrada obtenerDetalleEntrada(int idEntrada);
+    List<Entrada> listarEntradasEvento(int idEvento);
+    boolean verificarDisponibilidad(int idEntrada);
+    boolean reservarEntrada(int idEntrada);
 }
