@@ -8,7 +8,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.entidades.Cliente;
+import modelo.entities.Cliente;
+import modelo.JPA.impl.JPAClienteDAO;
+import modelo.dao.ClienteDAO;
 
 //3. Agregamos la anotación de web servlet para que el servidor Tomcat
 //reconozca la clase como un servle
@@ -19,14 +21,12 @@ public class GestionarClientesController extends HttpServlet {
 
 	// 2. Sobreescribimos los metodos doGet y doPost de la clase madre
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		this.ruteador(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		this.ruteador(request, response);
 	}
 
@@ -54,42 +54,69 @@ public class GestionarClientesController extends HttpServlet {
 		}
 	}
 
-	private void listarClientes(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//1.- Obtener los parámetros
+	private void listarClientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//2.- Hablar con el Modelo
-		List<Cliente> clientes = Cliente.extraerListaClientes();
+		
+		ClienteDAO modeloDAO = new JPAClienteDAO();
+
+		List<Cliente> clientes = modeloDAO.extraerClientes();
 		//3.- Llamar a la vista
 		request.setAttribute("clientes",clientes);
-		request.getRequestDispatcher("jsp/ListarClientes.jsp").forward(request, response);
+		request.getRequestDispatcher("vistas/listarClientes.jsp").forward(request, response);
 	}
 
 	private void crearCliente(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		//1.- Obtener los parámetros
-		//2.- Hablar con el Modelo
+		String correo = request.getParameter("correo");
+	    String clave = request.getParameter("txtClave");
+	    String celular = request.getParameter("txtCelular");
+	    String direccion = request.getParameter("txtDireccion");
+	    String cedula = request.getParameter("txtCedula");
+	    String nombre = request.getParameter("txtNombre");
+	    ClienteDAO modeloDAO = new JPAClienteDAO();
+	    
+	    System.out.println("DATOS RECIBIDOS:");
+	    System.out.println("Correo: " + correo);
+	    System.out.println("Clave: " + clave);
+	    System.out.println("Celular: " + celular);
+	    System.out.println("Direccion: " + direccion);
+	    System.out.println("Cedula: " + cedula);
+	    System.out.println("Nombre: " + nombre);
+
+	    Cliente cliente = new Cliente(correo, clave, celular, direccion, cedula, nombre);
+	    
+	    boolean resultado = modeloDAO.guardarCliente(cliente);
 		//3.- Llamar a la vista
-		response.sendRedirect("jsp/RegistrarCliente.jsp");
+	    if(resultado) {
+	    	response.sendRedirect("GestionarClientesController?ruta=listarClientes");
+	    }else {
+	    	response.sendRedirect("GestionarClientesController?ruta=listarClientes");
+	    }
+
 
 	}
 
 	private void modificarCliente(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//1.- Obtener los parámetros
-		int UsuarioId = Integer.parseInt(request.getParameter("UsuarioId"));
+		String cedula = request.getParameter("cedula");
 		//2.- Hablar con el Modelo
-		Cliente cliente = Cliente.obtenerInformaciónCliente(UsuarioId);
+		ClienteDAO modeloDAO = new JPAClienteDAO();
+		Cliente cliente = modeloDAO.obtenerInformacionCliente(cedula);;
 		//3.- Llamar a la vista
 		request.setAttribute("cliente", cliente);
-		request.getRequestDispatcher("jsp/ModificarCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("vistas/modificarCliente.jsp").forward(request, response);
 	}
 
 	private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			int usuarioId = Integer.parseInt(request.getParameter("UsuarioId"));
-			boolean eliminado = Cliente.eliminarCliente(usuarioId);
+			String cedula = request.getParameter("cedula");
+			ClienteDAO modeloDAO = new JPAClienteDAO();
+			boolean eliminado = modeloDAO.eliminarCliente(cedula);
 
 			if (eliminado) {
 				response.sendRedirect("GestionarClientesController?ruta=listarClientes");
@@ -105,39 +132,40 @@ public class GestionarClientesController extends HttpServlet {
 
 	private void guardarNuevo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		//1.- Obtener los parámetros
-		String correo = request.getParameter("correo");
-	    String clave = request.getParameter("txtClave");
-	    String celular = request.getParameter("txtCelular");
-	    String direccion = request.getParameter("txtDireccion");
-	    String cedula = request.getParameter("txtCedula");
-	    String nombre = request.getParameter("txtNombre");
-
-	    Cliente cliente = new Cliente(null, correo, clave, celular, direccion, cedula, nombre);
-	    //2.- Hablar con el Modelo
-	    boolean resultado = Cliente.crearCliente(cliente);
+		//2.- Hablar con el Modelo
 		//3.- Llamar a la vista
-	    if(resultado) {
-	    	response.sendRedirect("GestionarClientesController?ruta=listarClientes");
-	    }else {
-	    	response.sendRedirect("GestionarClientesController?ruta=listarClientes");
-	    }
+		response.sendRedirect("vista/RegistrarCliente.jsp");
+
 	}
 
 	private void guardarExistente(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//1.- Obtener los parámetros
-		int UsuarioId = Integer.parseInt(request.getParameter("UsuarioId"));
+		int usuarioId = Integer.parseInt(request.getParameter("UsuarioId"));
 		String correo = request.getParameter("correo");
 	    String clave = request.getParameter("txtClave");
 	    String celular = request.getParameter("txtCelular");
 	    String direccion = request.getParameter("txtDireccion");
 	    String cedula = request.getParameter("txtCedula");
 	    String nombre = request.getParameter("txtNombre");
+	    ClienteDAO modeloDAO = new JPAClienteDAO();
 
-	    Cliente cliente = new Cliente(UsuarioId, correo, clave, celular, direccion, cedula, nombre);
+	    Cliente cliente = new Cliente(correo, clave, celular, direccion, cedula, nombre);
+	    cliente.setUsuarioId(usuarioId);
+	    
+	    System.out.println("DATOS RECIBIDOS:");
+	    System.out.println("id: " + usuarioId);
+	    System.out.println("Correo: " + correo);
+	    System.out.println("Clave: " + clave);
+	    System.out.println("Celular: " + celular);
+	    System.out.println("Direccion: " + direccion);
+	    System.out.println("Cedula: " + cedula);
+	    System.out.println("Nombre: " + nombre);
+	    
 		//2.- Hablar con el Modelo
-	    boolean respuesta = Cliente.actualizarCliente(cliente);
+	    boolean respuesta = modeloDAO.actualizarCliente(cliente);
 		//3.- Llamar a la vista
 	    if(respuesta) {
 	    	response.sendRedirect("GestionarClientesController?ruta=listarClientes");
