@@ -1,0 +1,11 @@
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\config\CloudinaryConfig.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\controlador\GestionarClientesController.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\controlador\GestionarEventosController.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\dao\ClienteDAO.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\dao\EventoDAO.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\entities\Cliente.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\entities\Evento.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\JPA\impl\JPAClienteDAO.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\modelo\JPA\impl\JPAEventoDAO.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\serviciosREST\clienteRecurso.java
+C:\Users\User\Documents\GitHub\TicketPlan\src\main\java\serviciosREST\eventoRecurso.java
